@@ -1,2 +1,2 @@
 # ZF2_tutorial
-Repository for my Zend Framework 2 Tutorial
+This is my repository for Example Code used in my Zend Framework 2 Tutorial.
