@@ -25,10 +25,10 @@ How-To: Add Authentication and Authorization to your Skeleton Application
 
 ### Outline
 1. Install the Zend Framework 2 Skeleton Application.
-2. Install ScnSocialAuth
-3. Install BjyAuthorize
-4. Tweak final configurations
-5. Edit the index.phtml to add permissions.
+2. Install ScnSocialAuth.
+3. Install BjyAuthorize.
+4. Edit the index.phtml to add permissions.
+5. Tweak final configurations.
 
 ## 1. ZF2 Skeleton Application
 Follow the instructions on the Github page to install the ZF2 Skeleton Application. Alternately if you use Zend Studio, simply start a new project and the Skeleton Application gets installed. 
@@ -66,7 +66,7 @@ You can uncomment one or more of the *XYZSocial Enabled* configurations for exam
 
 Please note that you need to have an API account with Yahoo befor this will work but it should enable the Yahoo link when you go to the registration form "sign-up" link.
 
-*The procedure to register for a Client ID and Secret key is outside the scope of this How-To curently.*
+*The procedure to register for a Client ID and Secret key is outside the scope of this How-To currently.*
 
 ## 3. Install BjyAuthorize
 Follow the instructions on the Github page to install BjyAuthorize. The instructions will require you to create two new database tables.
@@ -110,3 +110,29 @@ return array(
 </code></pre>
 
 Please note that more sophisticated authorization using a more complex ACL that can guard Routes or Controllers is possible. However, this is a basic and very simple example.
+
+## 4. Edit the index.phtml to add permissions.
+This file contains the content below the navbar displayed as the Welcome to Zend Framework 2 message. For the purpose of this example, we will prevent un-authenticated users, aka 'guests' from seeing this message unless they login. Guests will see a prompt to login and authenticated users will see the normal skeleton application page.
+
+Open the file /module/Application/view/application/index/index.phtml in an editor and add the following changes. At the top of the page before the existing code, insert the following code.
+
+<pre><code>
+<?php if ($this->isAllowed('yadayada', 'err_msg')) { ?>
+<div class="jumbotron">
+    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
+    <p><?php echo sprintf($this->translate('Please Login to Continue ... '), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
+    <p><a class="btn btn-success btn-lg" href="<?php echo $this->url('zfcuser') ?>" target="_blank"><?php echo $this->translate('Login') ?> &raquo;</a></p>
+</div>
+<?php } ?>
+
+<?php if ($this->isAllowed('yadayada', 'all')) { ?>
+</code></pre>
+
+Now scroll to the end and add the following at the end.
+<pre><code>
+<?php } ?>
+</code></pre>
+
+Save the file and check the skeleton application. You should now see a 'Login to continue' message. If you login you should be able to see the regular Skeleton Application page.
+
+
