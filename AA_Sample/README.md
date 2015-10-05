@@ -119,7 +119,7 @@ Open the file /module/Application/view/application/index/index.phtml in an edito
 ```php
 <?php if ($this->isAllowed('yadayada', 'err_msg')) { ?>
 ```    
-
+Now add the error message as follows:
  
 ```html
 
@@ -129,21 +129,24 @@ Open the file /module/Application/view/application/index/index.phtml in an edito
     <p><a class="btn btn-success btn-lg" href="<?php echo $this->url('zfcuser') ?>" target="_blank"><?php echo $this->translate('Login') ?> &raquo;</a></p>
 </div>
 ```
+Close the PHP tag.
 
 ```php
 
     <?php } ?>
-
-    <?php if ($this->isAllowed('yadayada', 'all')) { ?>
-    
 ```
 
-Now scroll to the end and add the following at the end.
+Now enclose the existing HTML div with the following code at the top.\
+   
+```php
+    <?php if ($this->isAllowed('yadayada', 'all')) { ?>
+```
 
-<pre><code>
+Now scroll to the end and close the PHP tag at the end.
+
+```php
     <?php } ?>
-</code></pre>
-
+```
 Save the file and check the skeleton application. You should now see a 'Login to continue' message. If you login you should be able to see the regular Skeleton Application page.
 
 
