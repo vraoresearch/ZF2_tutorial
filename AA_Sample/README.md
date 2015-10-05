@@ -40,20 +40,20 @@ Make sure that you can see the Welcome to Zend Framework 2 message and the 404 e
 ## 2. Install ScnSocialAuth
 Follow the instructions on the Github page to install ScnSocialAuth. The instructions will require you to create a database instance using one of the supported formats. 
 
-Also pay attention to the requirements listed. ScnSocialAuth depends on the ZF2 component Zfcuser among other components. The schemas for several popular database formats are provided. You will need to create database schemas for both Zfcuser (found in its zfc-user/data folder) and for ScnSocialAuth (found in its scn-social-auth/data folder). They should get installed under vendor.
+Also pay attention to the requirements listed. ScnSocialAuth depends on the ZF2 component Zfcuser among other components. The schemas for several popular database formats are provided. You will need to create database tables for both Zfcuser (found in its zfc-user/data folder) and for ScnSocialAuth (found in its scn-social-auth/data folder).
 
 Do not forget to copy the configuration files to your main /config/autoload folder:
 * Zfcuser:         
-    > zfcuser.global.php
+    ** zfcuser.global.php
 * ScnSocialAuth:   
-    > * scn-social-auth.global.php
-    > * scn-social-auth.local.php
+    ** scn-social-auth.global.php
+    ** scn-social-auth.local.php
     
 Leave these configurations at their default settings for now.
 
 Again test and see if your skeleton application is still loading properly. In addition append ''/user'' to your skeleton application url and check if you can see the sign-in screen. You should also be able to see a 'sign-up' link. Go ahead and click on it and register yourself. If all goes well, you should see an entry in the users table of the database.
 
-At this point, basic authentication is working.
+At this point, basic authentication should be working.
 
 Now open *scn-social-auth.global.php* and scroll towards the end and uncomment the line:
 
@@ -69,3 +69,44 @@ Please note that you need to have an API account with Yahoo befor this will work
 *The procedure to register for a Client ID and Secret key is outside the scope of this How-To curently.*
 
 ## 3. Install BjyAuthorize
+Follow the instructions on the Github page to install BjyAuthorize. The instructions will require you to create two new database tables.
+
+Create a new file in /config/autoload folder called *bjyauthorize.global.php* This will hold the configuration for BjyAuthorize that will help us to create Access Control Lists or ACL's. In this example, we will keep it simple and simply check to see if a user is authenticated and logged in or is a guest and provide access acordingly.
+
+Copy the following code into *bjyauthorize.global.php*.
+
+<pre><code>
+<?php
+return array(
+    'bjyauthorize' => array(
+        'default_role'          => 'guest',
+        'authenticated_role'    => 'user',
+        'identity_provider' => 'BjyAuthorize\Provider\Identity\AuthenticationIdentityProvider',
+        'role_providers'        => array(
+            'BjyAuthorize\Provider\Role\Config' => array(
+                'guest' => [],
+                'user'  => ['children' => [
+                    'admin' => [],
+                ]],
+            ),                         
+        ),
+        'resource_providers'    => array(
+            'BjyAuthorize\Provider\Resource\Config' => array(
+                'yadayada' => array(),
+            ),
+        ),
+        'rule_providers' => array(
+            'BjyAuthorize\Provider\Rule\Config' => array(
+                'allow' => array(
+                    array(array('guest'), 'yadayada', 'err_msg'),
+                    
+                    array(array('user'), 'yadayada', 'all'),
+                ),
+            ),
+        ),
+    ), 
+);   
+          
+</code></pre>
+
+Please note that more sophisticated authorization using a more complex ACL that can guard Routes or Controllers is possible. However, this is a basic and very simple example.
