@@ -147,6 +147,9 @@ Now scroll to the end and close the PHP tag at the end.
 ```php
     <?php } ?>
 ```
-Save the file and check the skeleton application. You should now see a 'Login to continue' message. If you login you should be able to see the regular Skeleton Application page.
+Save the file and check the skeleton application. You should now see a 'Login to continue' message. Even clicking on home will not display the regular welcome message. If you login you should be able to see a the user greeting screen with logout link and clicking on home shows the regular Skeleton Application page.
 
+## 5. Tweak final configurations.
+If all went well up to this point, we can make the final tweaks to the config files to add more features such as redirection after login and a captcha for the registration form.
 
+To redirect the 

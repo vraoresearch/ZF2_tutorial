@@ -1,0 +1,30 @@
+<?php
+return array(
+    'bjyauthorize' => array(
+        'default_role'          => 'guest',
+        'authenticated_role'    => 'user',
+        'identity_provider' => 'BjyAuthorize\Provider\Identity\AuthenticationIdentityProvider',
+        'role_providers'        => array(
+            'BjyAuthorize\Provider\Role\Config' => array(
+                'guest' => [],
+                'user'  => ['children' => [
+                    'admin' => [],
+                ]],
+            ),                         
+        ),
+        'resource_providers'    => array(
+            'BjyAuthorize\Provider\Resource\Config' => array(
+                'yadayada' => array(),
+            ),
+        ),
+        'rule_providers' => array(
+            'BjyAuthorize\Provider\Rule\Config' => array(
+                'allow' => array(
+                    array(array('guest'), 'yadayada', 'err_msg'),
+                    
+                    array(array('user'), 'yadayada', 'all'),
+                ),
+            ),
+        ),        
+    ), 
+);
