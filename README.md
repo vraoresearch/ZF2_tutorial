@@ -1,2 +1,6 @@
+# About this Repository
+This repository contains Example Code used in the Zend Framework 2 Tutorial by V. Rao Research Associates.
+
 # ZF2_tutorial
-This is my repository for Example Code used in my Zend Framework 2 Tutorial.
+1. Zend Framework 2 Skeleton App.
+2. Authentication & Authorization.
