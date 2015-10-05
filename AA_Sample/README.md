@@ -117,21 +117,22 @@ This file contains the content below the navbar displayed as the Welcome to Zend
 Open the file /module/Application/view/application/index/index.phtml in an editor and add the following changes. At the top of the page before the existing code, insert the following code.
 
 <pre><code>
-<?php if ($this->isAllowed('yadayada', 'err_msg')) { ?>
-<div class="jumbotron">
+
+    <?php if ($this->isAllowed('yadayada', 'err_msg')) { ?>
+    <div class="jumbotron">
     <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
     <p><?php echo sprintf($this->translate('Please Login to Continue ... '), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
     <p><a class="btn btn-success btn-lg" href="<?php echo $this->url('zfcuser') ?>" target="_blank"><?php echo $this->translate('Login') ?> &raquo;</a></p>
 </div>
-<?php } ?>
+    <?php } ?>
 
-<?php if ($this->isAllowed('yadayada', 'all')) { ?>
+    <?php if ($this->isAllowed('yadayada', 'all')) { ?>
+    
 </code></pre>
 
 Now scroll to the end and add the following at the end.
-<pre><code>
-<?php } ?>
-</code></pre>
+
+<pre><code><?php } ?></code></pre>
 
 Save the file and check the skeleton application. You should now see a 'Login to continue' message. If you login you should be able to see the regular Skeleton Application page.
 
