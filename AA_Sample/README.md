@@ -122,7 +122,7 @@ Open the file /module/Application/view/application/index/index.phtml in an edito
     
  </code></pre>
  
- '''html
+```html
  <pre>
     <div class="jumbotron">
     <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
@@ -130,7 +130,7 @@ Open the file /module/Application/view/application/index/index.phtml in an edito
     <p><a class="btn btn-success btn-lg" href="<?php echo $this->url('zfcuser') ?>" target="_blank"><?php echo $this->translate('Login') ?> &raquo;</a></p>
 </div>
 </pre>
-'''
+```
 <pre><code>
     <?php } ?>
 
