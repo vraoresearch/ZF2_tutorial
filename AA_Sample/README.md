@@ -152,4 +152,13 @@ Save the file and check the skeleton application. You should now see a 'Login to
 ## 5. Tweak final configurations.
 If all went well up to this point, we can make the final tweaks to the config files to add more features such as redirection after login and a captcha for the registration form.
 
-To redirect the 
+These settings are part of the ZF2 component Zfcuser. More information about this component can be found in the Zend Framework Manual.
+
+
+To redirect the user to the main welcome page as soon as they login instead of the user greeting, change the following line in *zfcuser.global.php*.
+
+<pre><code>
+'login_redirect_route' => 'home',
+</code></pre>
+
+
