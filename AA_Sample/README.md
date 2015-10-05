@@ -116,27 +116,27 @@ This file contains the content below the navbar displayed as the Welcome to Zend
 
 Open the file /module/Application/view/application/index/index.phtml in an editor and add the following changes. At the top of the page before the existing code, insert the following code.
 
-<pre><code>
+```php
+<?php if ($this->isAllowed('yadayada', 'err_msg')) { ?>
+```    
 
-    <?php if ($this->isAllowed('yadayada', 'err_msg')) { ?>
-    
- </code></pre>
  
 ```html
- <pre>
-    <div class="jumbotron">
+
+<div class="jumbotron">
     <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
     <p><?php echo sprintf($this->translate('Please Login to Continue ... '), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
     <p><a class="btn btn-success btn-lg" href="<?php echo $this->url('zfcuser') ?>" target="_blank"><?php echo $this->translate('Login') ?> &raquo;</a></p>
 </div>
-</pre>
 ```
-<pre><code>
+
+```php
+
     <?php } ?>
 
     <?php if ($this->isAllowed('yadayada', 'all')) { ?>
     
-</code></pre>
+```
 
 Now scroll to the end and add the following at the end.
 
