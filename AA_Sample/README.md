@@ -183,3 +183,9 @@ To enable Captch which is turned off by default, change the value of 'use_regist
     ),
     
 ```
+TBD
+---
+1. Logout Button
+Currently user needs to navigate to {url}/user/logout
+
+
