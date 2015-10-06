@@ -9,7 +9,7 @@ Main Components Used
 ---------------
 ### [ScnSocialAuth](https://github.com/SocalNick/ScnSocialAuth).
 
-Uses the HybridAuth PHP library to Enable authentication via Google, Facebook, Twitter, Yahoo!, etc for the ZfcUser ZF-Commons module.
+Uses the [HybridAuth](http://hybridauth.sourceforge.net) PHP library to Enable authentication via [Google](https://console.developers.google.com), [Facebook](https://developers.facebook.com/products/login), [Twitter](https://apps.twitter.com), [Yahoo!](https://developer.yahoo.com), etc for the ZfcUser ZF-Commons module.
 
 ### [BjyAuthorize](https://github.com/bjyoungblood/BjyAuthorize).
 
@@ -66,7 +66,7 @@ You can uncomment one or more of the *XYZSocial Enabled* configurations for exam
 
 Please note that you need to have an API account with Yahoo befor this will work but it should enable the Yahoo link when you go to the registration form "sign-up" link.
 
-*The procedure to register for a Client ID and Secret key is outside the scope of this How-To currently.*
+*The procedure to register for a Client ID and Secret key is outside the scope of this How-To currently. Please follow the links embedded in the description of Scn-Social-Auth to get to the developer pages for the respective social-media service to obtain the necessary ID's and keys*
 
 ## 3. Install BjyAuthorize
 Follow the instructions on the Github page to install BjyAuthorize. The instructions will require you to create two new database tables.
