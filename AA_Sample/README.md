@@ -44,10 +44,10 @@ Also pay attention to the requirements listed. ScnSocialAuth depends on the ZF-C
 
 Do not forget to copy the configuration files to your main /config/autoload folder:
 * Zfcuser:         
-    ** zfcuser.global.php
+    * zfcuser.global.php
 * ScnSocialAuth:   
-    ** scn-social-auth.global.php
-    ** scn-social-auth.local.php
+    * scn-social-auth.global.php
+    * scn-social-auth.local.php
     
 Leave these configurations at their default settings for now.
 
@@ -154,7 +154,7 @@ If all went well up to this point, we can make the final tweaks to the config fi
 
 These settings are part of the ZF2 component Zfcuser. More information about this component can be found in the Zend Framework Manual.
 
-**** Login Redirect
+<h4>Post-Login Redirect</h4> 
 
 To redirect the user to the main welcome page as soon as they login instead of the user greeting, change the following line in *zfcuser.global.php*.
 
@@ -163,7 +163,7 @@ To redirect the user to the main welcome page as soon as they login instead of t
 </code></pre>
 
 
-**** Add Captch to Registration Page
+<h4>Add Captch to Registration Page</h4> 
 
 To enable Captch which is turned off by default, change the value of 'use_registration_form_captcha' to true. Also uncomment the Form captcha options below it.
 
