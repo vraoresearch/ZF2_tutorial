@@ -3,13 +3,13 @@ Authentication & Authorization
 
 Introduction
 ------------
-This tutorial example is based on the [Zend framework 2 Skeleton Application] (https://github.com/zendframework/ZendSkeletonApplication). It shows how to integrate Social Authentication and Authorization into the Skeleton Application to demonstrates how two community component modules can be used to extend existing ZF2 components and form the basis of a practical working application.
+This tutorial example is based on the [Zend framework 2 Skeleton Application] (https://github.com/zendframework/ZendSkeletonApplication). It shows how to integrate Social Authentication and Authorization into the Skeleton Application to demonstrates how community component modules can be used to extend existing ZF2 components and form the basis of a practical working application.
 
-Components Used
+Main Components Used
 ---------------
 ### [ScnSocialAuth](https://github.com/SocalNick/ScnSocialAuth).
 
-Uses the HybridAuth PHP library to Enable authentication via Google, Facebook, Twitter, Yahoo!, etc for the ZfcUser ZF2 module.
+Uses the HybridAuth PHP library to Enable authentication via Google, Facebook, Twitter, Yahoo!, etc for the ZfcUser ZF-Commons module.
 
 ### [BjyAuthorize](https://github.com/bjyoungblood/BjyAuthorize).
 
@@ -40,7 +40,7 @@ Make sure that you can see the Welcome to Zend Framework 2 message and the 404 e
 ## 2. Install ScnSocialAuth
 Follow the instructions on the Github page to install ScnSocialAuth. The instructions will require you to create a database instance using one of the supported formats. 
 
-Also pay attention to the requirements listed. ScnSocialAuth depends on the ZF2 component Zfcuser among other components. The schemas for several popular database formats are provided. You will need to create database tables for both Zfcuser (found in its zfc-user/data folder) and for ScnSocialAuth (found in its scn-social-auth/data folder).
+Also pay attention to the requirements listed. ScnSocialAuth depends on the ZF-Commons component Zfcuser among other components. The schemas for several popular database formats are provided. You will need to create database tables for both Zfcuser (found in its zfc-user/data folder) and for ScnSocialAuth (found in its scn-social-auth/data folder).
 
 Do not forget to copy the configuration files to your main /config/autoload folder:
 * Zfcuser:         
@@ -154,6 +154,7 @@ If all went well up to this point, we can make the final tweaks to the config fi
 
 These settings are part of the ZF2 component Zfcuser. More information about this component can be found in the Zend Framework Manual.
 
+**** Login Redirect
 
 To redirect the user to the main welcome page as soon as they login instead of the user greeting, change the following line in *zfcuser.global.php*.
 
@@ -162,3 +163,23 @@ To redirect the user to the main welcome page as soon as they login instead of t
 </code></pre>
 
 
+**** Add Captch to Registration Page
+
+To enable Captch which is turned off by default, change the value of 'use_registration_form_captcha' to true. Also uncomment the Form captcha options below it.
+
+<pre><code>
+'use_registration_form_captcha' => true,
+</code></pre>
+
+
+```php
+'form_captcha_options' => array(
+        'class'   => 'figlet',
+        'options' => array(
+            'wordLen'    => 5,
+            'expiration' => 300,
+            'timeout'    => 300,
+        ),
+    ),
+    
+```
